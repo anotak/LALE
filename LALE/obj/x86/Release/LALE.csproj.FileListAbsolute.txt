@@ -1,0 +1,33 @@
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\bin\Release\LALE.exe
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\bin\Release\LALE.pdb
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.Form1.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.GridBox.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.InterpolationPicturebox.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.Properties.Resources.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.exe
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.pdb
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.Credits.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\bin\Release\LALE.exe.config
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.NewObject.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.WarpEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.ChestEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.MinimapEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.ExportMap.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.StartEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.RepointText.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.SearchPhrase.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.TextEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.SpriteEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.OwlStatueEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.SignEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.MinibossEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.PaletteEditor.resources
+C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.RepointCollision.resources
+C:\Users\Patrick\Documents\Visual Studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.csprojResolveAssemblyReference.cache
+C:\Users\Patrick\Documents\Visual Studio 2010\Projects\LALE\LALE\obj\x86\Release\LALE.csproj.GenerateResource.Cache
+S:\Programming\Old Projects\Projects\LALE\LALE\bin\Release\LALE.exe.config
+S:\Programming\Old Projects\Projects\LALE\LALE\obj\x86\Release\LALE.exe
+S:\Programming\Old Projects\Projects\LALE\LALE\obj\x86\Release\LALE.pdb
+E:\Programming\Old Projects\Projects\LALE\LALE\bin\Release\LALE.exe.config
+E:\Programming\Old Projects\Projects\LALE\LALE\obj\x86\Release\LALE.exe
+E:\Programming\Old Projects\Projects\LALE\LALE\obj\x86\Release\LALE.pdb

@@ -1,0 +1,107 @@
+Link's Awakening DX Notes
+
+010033C1 - Walk through walls
+
+Weapon IDs:
+01 sword, 02 bombs, 03 power bracelet, 04 shield, 05 bow, 06 hookshot, 07 wand, 08 boots, 09 ocarina
+0A feather, 0B shovel, 0C magic powder, 0D boomerang
+
+Memory Addresses:
+
+FF94 - S.O.G Value
+FF98 - Link's X position
+FF99 - Link's Y position
+FFF6 - Current map
+FFF7 - Current dungeon
+FFF9 - Side Scrolling bit
+
+C11C - Terrain byte (00 ground, 01, water (swimming), 06 falling)
+C125 - Direction map was entered from (00 right, 01 left, 02 up, 03 down)
+C133 - Collision byte (00 for ground)
+
+C3AF - Dropped item ID
+C45F - Dropped item timer
+C46F - Dropped item in use bit
+
+D6FB - Crystal switch flag
+D700-D79B - Tile data for current map
+*Maps are 10x8, dungeons
+
+D415 - Total number of enemies killed
+
+DB00 - B-Button equipment slot
+DB01 - A-Button equipment slot
+DB02-DB0B - Inventory slots
+
+DB5A - Link's current health (0x08 = 1 heart)
+DB5B - Total number of hearts
+DB5C - Number of heart pieces
+DB5D - Number of rupees (Upper int)
+DB5E - Number of rupees (Lower int)
+DB90 - Rupee subtraction (Upper int)
+DB91 - Rupee subtraction (Lower int)
+
+DB65-DB6C - Instrument bytes
+
+DB43 - Bracelet level
+DB44 - Shield level
+DB4E - Sword level
+
+DB4C - Number of magic powder
+DB76 - Carrying capacity of magic powder
+DB4D - Number of bombs
+DB77 - Carrying capcity of bombs
+DB45 - Number of arrows
+DB78 - Carrying capacity of arrows
+
+DB0C - Flippers
+DB0D - Number of potions
+DB0F - Number of secret shells
+DB15 - Number of golden leaves
+
+DBD0 - Number of small keys
+DBCC - Dungeon map
+DBCF - Number of nightmare keys
+
+DBA5 - Indoor/Outdoor byte
+DB60 - Death dungeon spawn
+DB61 - Death map spawn
+DB64 - Death minimap location
+
+DB56 - Chain Chomp following byte
+DB73 - Marin following byte
+DB79 - Ghost following byte
+DB7B - Flying rooster following byte
+
+DB57 - Save slot death count
+
+DBC7 - Invulnerability timer (after getting hit)
+
+DC0F - Tunic equipped (00 green, 01 red, 02, blue)
+DC10-DC4F - Tileset Palette
+DC50-DC8F - Sprite/Object Palette
+D358 - Music
+
+Text Bank Addresses
+C112
+C173
+C19F - Bit for Yes/No (0xD)
+
+C505 - Shop Items
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ENEMY RAM:
+
+C20x - Object Y
+C21x - Object X
+
+C24x - ?? 
+C25x - ??
+
+C28x - Object in use bit
+
+C2Ex - Action timer
+
+C36x - Object health
+C38x - Object direction
+C3Ax - Object ID

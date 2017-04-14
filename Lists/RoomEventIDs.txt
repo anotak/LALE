@@ -1,0 +1,47 @@
+The IDs and triggers of rooms. Think of triggers as "causes" and IDs as "effects."
+
+I did compile several of these on my own, but I looked to the Jigglysaint's The First Unofficial Link's Awakening DX ROM Hacking Document included with his bitchin' Link's Awakening hack "Nightmare's Illusion" to help me out with many of these. I tested each one myself, and tried to elaborate on some things.
+
+Doorway tiles F0-F3 shut when the ID calls for it. If you want a room where some doors close, but not all of them, then use one of the tiles F4-F7 to make a doorway that never closes. If you want all shutter doors in the room to be one-way, then set ID to 2 and trigger to 0.
+
+IDs
+0: Nothing.
+2: Any locked doors open.
+4: All enemies die.
+6: Chest appears at position 28.
+8: Key-drop at position 32.
+Don't put chests in rooms with this ID.
+A: Stairwell appears at position 18.
+Don't put chests in rooms with this ID.
+C: Midway warp appears, doors open (Miniboss flag).
+E: Fairy appears at position 28.
+Don't put chests in rooms with this ID.
+
+Triggers
+0: Nothing.
+1: Kill all enemies.
+2: Push a single block (tile 0xA7).
+3: Step on button (can only use once per dungeon).
+4: ? (found at the end of the Color Dungeon with the fairy)
+5: Light two torches.
+6: Kill enemies in order of their sprite/object ID (after killing three enemies, the ID is triggered. This is the Pols Voice/Keese/Stalfos puzzle from Bottle Grotto).
+7: Push 2 blocks together. They don't both have to be tile A7 (meaning you don't have to push both), but their final position must be horizontal.
+If you have one block be pushed up/down and the other left/right, keep in mind the up/down one must be pushed first, or the ID won't trigger.
+If you have only one pushable block, and it goes up/down, it won't work; it must be left/right.
+8: Kill all "special" enemies (normally can't be killed).
+9: This is the five-tile puzzle from Lv.4/Angler's Tunnel. You must do two things to get this to work:
+You must place either sprite 8A or 8B somewhere in the room, doesn't matter where. 8A makes the little glow thing you follow visible, whereas 8B makes it invisible.
+You also must place tile (not sprite) 8D in each of these exact locations: 22, 27, 35, 42 and 47. Otherwise the aforementioned glow thing won't react to you.
+Something to note: this puzzle triggers the room ID even when the trigger isn't 9. This means you can have two different solutions in one room: this one, and another like stepping on a button by setting trigger to 3. An idea for this might be you make a room through which you travel a lot where solving the five-tile puzzle would be pretty difficult, but after you get a certain item in the dungeon, you can just either step on a button or light a distant torch to easily solve the room. Just an idea on how to take advantage of this.
+A: Kill either Angler Fish (Level 4 boss) or Evil Eagle (Level 7 boss).
+Kill Angler Fish to trigger ID in any dungeon except 7.
+Killing Evil Eagle only triggers IDs in level 7.
+The room which has this trigger doesn't even need to be in the same dungeon as these bosses. So a locked door in Level 1 might remain locked until you kill Angler Fish, which can be all the way in Level 8 if you wish.
+B: Throw something at a shut door.
+Doors on the left or right walls can't be opened by throwing mere pots; you need to throw those heavy statue things from Face Shrine (sprite 0x9D, requires Lv. 2 bracelet). ID must be 2, or else doors won't shut and you have nothing to throw at.
+Note that throwing something at one shut door opens all doors, not just the one you threw at.
+C: Get both horse heads (sprite 0x98) to stand up.
+As with trigger 9, this solves the room even without setting the room's trigger to C.
+D: Throw a pot at a chest in position 23 to open it and obtain the Nightmare Key. If you don't place the chest in that position, one will appear there anyway, so just place the chest there to avoid duplicate chests.
+E: Fill in the gaps with that rolling thing from Turtle Rock (sprite 0xB1).
+F: Shoot an arrow at the eye of a statue (tile 0xC0). You can have as many statues as you want; shooting any of them will work.

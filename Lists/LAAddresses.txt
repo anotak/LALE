@@ -1,0 +1,16 @@
+0x9462 - Key Falling X-Pos
+0x9478 - Key Falling Y-Pos
+0x9DFD - Chest Poof X-Pos
+0x9EEB - Chest Poof Y -Pos
+0x9F10 - Chest X
+0x9F0C - Chest Y
+0x9F89 - Stair X
+0x9F81 - Stair Y
+
+0x152B2 - Link Start X (During event)
+0x152B8 - Link Start Y (During event)
+0x53DE - Link Start X
+0x53E3 - Link Start Y
+0x53DA - Link Start Dungeon
+0x53CB - Link Start Map
+0x53D5 - Starting Indoor/Outdoor bit

@@ -1,0 +1,95 @@
+=Level editing (Dungeons)=
+0x28000 - Pointers to rooms (Dungeons 1-6, and some caves). 2 bytes each
+0x2C000 - Pointers to rooms (Dungeons 7-9, and rest caves). 2 bytes each
+Example: 03 42 = 0x28203
+
+Header = 2 bytes:
+1st = Animation index: "set it to different values to control things like water animation and torch and lamp animations." This would make certain tiles animate.
+2nd = (Nybble encoded) First 4 bits (0 in 0D) = Wall template (Defining floor and walls). For example, 	$93 = 9 = walls, 3 = floor type
+Regular tiles = $00 - $EB
+Door tiles = $EC - $FD
+	$EC - EF = Key Door
+	$F0 - $F3 = Closed door
+	$F4 - $F7 = Open door
+2 Byte Objects
+First byte = Location (YX) (3A = [Y=3][X=A])
+Second byte = Tile ID
+
+3 Byte Objects
+Always start with 8x or Cx. X = How long it is
+8 = Horizontal
+C = Vertical
+(Follow 2 byte format)
+
+Warps
+Each screen can have one warp
+
+5-Byte Warps
+First byte = Area Type (E tells it to be a warp, 2 = area type)
+	00 = overworld
+	01 = dungeon
+	02 = side view area
+Second byte = Dungeon map (00 = Level 1, 01 = Level 2, etc)
+Third byte = Dest Room (Must be in map of the dest dungeon)
+Fourth byte = X (Tile x, extra X)
+Fifth byte = Y (Add 10, starts at header)
+
+Dungeon Map Minimap:
+Each dungeon has 64 (8x8) bytes for the connections. Starts at top left, and goes right. For example:
+00 00 00 00 00 00 00 00 00
+00 01 00 00 02 03 04 00 00
+
+Starts at 0x50220
+00 = No map (null map, enclosed room)
+Anything other than 00 is the map ID.
+
+Minimap
+The minimap works the same as the connections (Almost)
+Side-view maps do not show.
+Starts at 0xA49A (ONLY WITH 1.1 ROM)
+7D = Empty
+EF = Normal Room
+EE = Boss
+ED = Chest
+Room connections start at 0xA71A
+Minimap arrow at 0x6E8D
+Minimap death locations: 0x50E41
+
+Sprites
+Starts at 0x58000. All sprites are placed here.
+First data is a list of pointers.
+After finding sprite data, it works just like two byte objects (Refer to top)
+
+Tilesets
+0x805aa - Wall tile set
+0x80589 - Floor tile set
+
+Graphics
+Contains no index. 4 bytes per tile, each indicating the 8x8 tiles it's composed of
+0x0-0xF - Special Object Graphics
+0x10-0x1F - Floor Tiles
+0x20-0x3F - Wall Tiles
+0x40-7F - Remainder (Chests, stairs, etc...)
+0x6C-0x6F - Animated tile graphics, change depending on animation index
+0xF0-0xFF - Pots, Blocks, and Statues
+Combinations start at: 203b0
+Floor graphics start at: 0xB4C00 (4 per tile)
+
+Overworld Editing
+Rooms 0-7F - 0x24000
+Rooms 80-FF - 0x68000
+Overlay data start: 98000 (At 0xCC, data starts at 0x9C000 instead of continuing from room 0xCB)
+All overworld pointers are at 0x24000
+
+Overworld Minimap Editing
+Graphics 0x0 - 0x6F: 0xB3900
+Graphics 0x70 - 0x7F: 0xB3800
+Data starts at: 0x81697
+Refers to minimap graphic index
+Palette starts at: 0x81797
+
+Overworld Palette Pointers: 0x6a476
+Overworld sprite sets: 0x830D3 One byte per room
+
+Owl Statues Text ASM: 0x61EAE
+Shop items: 0x137B6

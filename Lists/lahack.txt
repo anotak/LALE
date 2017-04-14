@@ -1,0 +1,226 @@
+
+
+        THE FIRST UNOFFICAL LINK'S AWAKINING DX ROM HACKING DOCUMENT
+
+                         TOM "JIGGLYSAINT" WILLIAMS
+                                   2002
+TABLE OF CONTENTS
+
+
+1...............................INTRODUCTION
+
+2...............................LEAGAL STUFF
+
+3...............................GETTING STARTED
+
+4...............................OFFSET 28000, AND WHAT TO DO WITH IT
+
+5...............................0FFSET 50000, SOME IMPORTENT STUFF
+
+6...............................OFFSET 58000, SPRITE PLACING
+
+7...............................THE THINGS I NEED TO YET CRACK
+
+8...............................MYSTRIOUS DATA
+
+
+                                 INTRODUCTION
+
+        Hello, welcome to my rom hacking document on Link's Awakining DX
+for Gameboy.  I first became interested in hacking this game a while ago,
+when I first found the room order data several years ago.  After that
+I found the data that indicates what is in what chest.  After that I
+checked out offset 28000.  At first I didn't understand what this was, but
+several years later, I found out that it was actually the room pointer data.
+Since the time that I found out the level data, my interest peaked
+and I decided to crack much more of the game in hopes of somebody wanting
+to build a level editor for this game.  So far I seem to be the first
+person hacking this rom.  Whether it means that I was the fastest, or just
+somebody with extra time on his hands, it still means that as far as I know,
+nobody has even made an attempt to decode the information except for myself.
+
+                              LEAGAL STUFF
+
+        The only thing I claim in this document, is the fact that
+I was the one who got all this info first(except for Nintendo).  That means
+that I own the bragging rights to the first Zelda 4 hack in existence.
+
+I want to thank Nintendo of America for their hard work and dedication
+to the Zelda series.  Remember, Nintendo still owns this game and everything
+in it.  The only thing I own is the content of this document, and the ips
+patch containing all the modifications to this game.  Distributing this
+document is okay, as long as I am given credit.
+
+
+                              GETTING STARTED
+
+        The first thing you need is a copy of LA DX for Gameboy Colour.
+If you run a search on a search engine, you may find one.  *It is
+a taboo in the hacking world to ask for roms, especially from people
+who produce documents such as this.  Any rom requests I get will be deleated
+and if the spam continues, I will block them so they won't be able to get any
+help.  I sense that this will be a rare occurence.
+
+Now, after getting the rom, you will need two more tools:  A gameboy
+emulator, and a hexadecimal editing program.  I am using gameboy97 as my
+emulator since it works best for editing.  For playing I suggest
+HGB.  As for a hex editor, I am using Hexposeure, very simple to use.
+
+One more thing, make two extra copies of the rom.  One is for backup,
+and one can be saved if you like the changes.  Allways have a unaltered
+copy at hand in case the rom messes up.
+
+Now that you are ready, we can begin.
+
+                                OFFSET 28000
+
+        As the header suggests, open your rom in your hex editor and
+go to offset 28000.  There are no headers, so 28000 is the start of the data.
+here, you will notice numbers arranged in some sort of strange pattern.
+I assume you know what hex is and how to use it so I won't bother
+with explaining it.  Now, these numbers actually belong in pairs.
+For example, the first two numbers are 00 42.  The second pair is 03 42 and
+the third is 42 42.  See a pattern?  This data, which goes from 28000h to
+281f0h, is the room pointer data for levels 1 through 6.  It is here that
+you can copy a pair of bytes from one pair of numbers to another.
+
+Try it out.  First start a game and play untill you get to the enterence to
+level 1.  Make a save state and exit.  Now, back at offset 28000, find the
+value 4A 46.  now, turn that value to 42 42, one of the values I mentioned
+earlier.  Now, enter level and go left.  Notice that the room is different,
+but the enemies are still there?  You have just copies room 2's level data
+to room 16's room data.  To turn it back to normal, just replace 42 42 with
+4A 46.  Back to normal.  Later on, I will tell you why this can be useful.
+
+Now, to find the actual data for each room(a room is definded by two byte
+pairs), first take the second number in the pair.  Since room 17 is the
+enterence to the dungeon, find the value 8C 46.  What's the beginning offset
+of it's data?  Easy!  It's 2868C.  Notice anything similar between the
+byte pair and the offset?  Yes, 8C, the first number in the pair is the last
+number in the offset.  Now, the 28 is easy to figure out too.  The 28 means
+it's still in the same part of the rom as the room pointers.  Now what about
+the 68?  This is tougher to figure out.  Take the pair 8C 46.
+now, the second byte can be split up into two single number which I think
+are called Nybbles.  The "4" in this number refers back to 28000h.
+The "6" means that the start data is from line 600, in offset 28000h.
+So the number is 28600h.  You know what goes in the last space, right?
+Yes, it's the first number in the pair!  The first number controls
+the first 3 numbers of the offset, while the last two are the first number.
+Now, you will be seeing some "50's" in some of the pairs.  The first
+nybble of the number changes to a 5 when you get down to offset 29000h.
+So what do you think 2a000h's number be?  That's right, a "6".
+
+Okay, convert these offsets into a number pair:  2b687, 28796, 2aaaa, and
+28202.
+
+Now, convert these number pairs into offsets:  45 45, 10 44, F3 55, and
+A6 62.
+
+"Master using it and you can have this".      (Old man, Zelda 1)
+
+        So having mastered room pointers, now we can get into the
+level data.  Find room 8C 46, or heafter refered to room 17.
+Now, you will see the byte "FE" to the left of your position.  That byte
+tells the game to end a room.  In this case, that "FE" is the end of room
+16.  The first two bytes of a room is for certain information.
+The first byte is for animated tiles.  There is an 04 here in this case.
+Notice that the torches in this, and many other rooms animate?
+Change the 04 to somthing else, say, an 0A, to get animations of different
+objects.  Things like the water in some areas, torches, and other things
+have a byte that refers it to the right animation.
+Now the second byte, the first nybble determins the room template.
+You can chose from four walls, no walls, or different combonations of
+walls and no walls.  The other nybble is the floor of the room.
+You can select from 16 different floor tiles.
+
+Now, the next bits of data are put into three
+types of data.  First, you have a two byte combonation, a three-byte
+combo, and then a five byte combo.  The two byte combo is easy to explain.
+The playing field is 8x10, or 7hx9h, or 80 tiles.  The first byte of the
+combo is the co-ordinates of a tile.  The second byte is the tile
+type.  Now, a three-byte combo is a little strange.  This is used
+when you want several of the same tiles.  The first byte's first nybble
+must be from 8 to F.  Second, only 8, A, and C will work right.  E, is
+used in five byte combos.  The second nybble is how many tiles you want
+of that tile.  Just remember that in hex, 0 is 1, and so forth.
+
+Now the five byte combo is special, becasue it the warp data for that
+screen.  The first byte is E*, where *= a byte from 0-2.  This
+second nibble determins what the destination screen will act like.
+A 0 is overworld, a 1 is a side-view screen, and a 2 is for a dungeon.
+The second byte is the d-map byte.  A d-map is really a
+term used by people who use Zelda Classic, made by Armageddon Games.
+A d-map is basically a dungeon map, with music, graphics, and other
+level-specific data in it.  00 is level 1, 01 is level 2, ect.
+The third byte is the screen destination.  I still don't understand
+as of yet how this byte behaves, but it has somthing to do with one of
+the offsets in the 50000's range.  Teh last two bytes are the exit
+co-ordinates.  The first byte is horizontal and the second is vetical.
+Take the example pair values "28 40"  Now unlike the tile placement, this
+placement method has more options.  This value means that on line 30(00
+is actually above 00(?)), the 28 means that it is centred so it's two
+columns away from the left edge.  This value is set up so Link will
+warp to tile 32, also known as the key tile.
+
+So that's your level data, right there.
+One thing I forgot to mention is doors.  A door is make of two tiles,
+but is placed using the two byte combo.  Some doors might look wierd on
+some screens.  
+
+Comming up, Sprite data.
+
+
+                                OFFSET 50000
+
+Right at the start of 50000, we have event data.  Each byte represents a room 
+in the game that you can assign an event to.  If you go to the 17th(in hex, or 50017), you will see a 00.  Left of it is an 81.  Each event is made of 2 nybbles.  The left nybble indicates what is to occure, while the right nybble 
+indicates the trigger.  In the case of byte 81, the left part means that a key is to be dropped at tile 32.  The right half means that this event is triggered by killing all the enemies on screen.  I have tried, and I have found that there are 8 events, with 16 triggers to trigger them.  Off the top of my head I know that events are as follows:  2=opens shutters.  4=defeats all enemies.  6=a treasure chest appears at position 28.  8=a key falls at position 32.  A=a staircase will apprear at position 18.  C=the miniboss flag is set, shutter opens, warp to start of dungeon is opened.
+
+The triggers, if memory serves me right are as follows:  1=must defeat all enemies.  2=push a block.  3=push a trigger.  4=?  5=light all torches.  6=level 2 nightmare key puzzle, that is you need to destroy a Pols Voice first, then a keese, then a staflos.  7=push two blocks together, can be in any form as long as they are both movable blocks.  8=kill special enemies, which are defined as enemies that can't normally be destroyed like traps and sparks.  9=level 4 tile puzzle must be completed.  A=defeat boss 4 or 7 to open shutter door.  B=one way shutter, or throw somthing at it to open.  C=throw the horse heads at a wall to stand them up.  D=smash a chest to open, allways get a nightmare key, allways opens at a specific spot.  E="Fill in the holes with the rock that rolls".  F=fire an arrow at a statue, might be sprite related.
+
+Okay, there's the list.  So let's say you want a door that opens when you push a block.  The byte would be 22.  23 and the door would open if you press a floor switch.  Some events might not work right with eachother.
+
+                              OFFSET 50220
+
+This is the room order data.  Each dungeon is made up of several rooms that are assembled here.  First, go to 50250, and find the bytes 15, 16, and 17.  These are the first three rooms of level 1.  The rooms go from left to right, with any rooms above or below them + or -8.  For example, room 17.  If you want to find the room above it, count 8 to the left and you will get room 13. You can also look at it as each row of data contains 2 rows of dungeons.  The other way is an easier way of figuring it out though.  Anyway, there isn't much to tell except for if you want warps to work, the room you assign in the level data must be present or you will go to a blank room.  As long as the room is present on the map, you will go to it when you warp.  So that means that you could place room 17 somewhere else to get the enterence to be in a different place on the map.
+
+                              OFFSET 50660
+
+Chest data!  Each room can hold one item via chest.  I believe that only the first 32 bytes are used, and some of them might be glitchy.  The overworld chest data is also stored here.
+
+                              OFFSET 50917
+
+Screen template data.  There are several preset wall formations for dungeons. The most common one is one with 4 walls and 4 corner tiles.  The first part of the numbers in a template are positions for the blocks to be used.  The second half are the blocks used.  Basically, if you define that you will use position 00, the first position in the second part will place the block at postion 00.  Not too hard to figure out.
+
+                              OFFSET 58000
+
+Sprite data!  This the place where enemies are placed into the game.  It works almost exactly the same as the level data, except for that there is more data since all the sprites in the game are placed via this data.  The other difference is that instead of the data ending with an FE, it ends with an FF.  Other than that, and the more complicated pointer(still the same, but way more data to crunch), it's just like placing a 2 byte object.
+
+
+				THINGS I NEED TO CRACK
+
+	I haven't cracked the position and text of the owl statues nor can I place certain events in certain places.  Soem of them I can, like the wrap around warp in level 6 a screen right after the mini boss, I will deal with stuff like that in the next section.  As for other things I can't do, enemy editing, full overworld editing(I can edit the basic overworld, but not the color gamebody tiles that appear over top of them).  More time, patience, and manpower are needed to crack some of the data for the game.
+
+				MYSTERIOUS STUFF
+
+Offset for level floor tiles - 80589 - 4c
+
+Enemy graphics   831d3 - 01
+
+Wall graphics    805aa - 40
+
+Block graphics   805ca - 79
+
+Special object graphics 82eb0 - ff  
+
+Staflos ASM - 57bb8
+
+chest asm?  81d2
+
+enemy drop table?  d635
+
+Spiky's ASM 1f7e0
+
+Level 6 warp event asm - ba60
+
+Dungeon 1-6 clip bytes - 20bd4
