@@ -1,0 +1,48 @@
+A list of the IDs of what a chest holds.
+
+Items
+0: Power Bracelet
+1: Shield
+2: Bow (Mismatched text. You don't get any arrows)
+3: Hookshot
+4: Magic Rod
+5: Pegasus Boots
+6: Ocarina
+7: Roc's Feather
+8: Shovel
+9: Magic Powder (Just the item. You don't get any units of powder)
+A: Bomb (1)
+B: Sword
+C: Flippers
+D: Magnifying Lens
+10: Secret Medicine
+
+Dungeon Items (don't put these on the OW, you'll get nothing)
+16: Map
+17: Compass
+18: Stone Beak
+19: Nightmare Key
+1A: Small Key
+
+Dungeon Keys (don't put these in dungeons, you'll get nothing)
+11: Tail Key
+12: Angler Key (Mismatched text)
+13: Face Key (Mismatched text)
+14: Bird Key (Mismatched text)
+
+Treasure
+1B: 50 Rupees
+1C: 20 Rupees
+1D: 100 Rupees
+1E: 200 Rupees
+1F: 200 Rupees
+20: Secret Seashell
+
+Miscellaneous
+15: Gold Leaf
+21: Message (used in Catfish's Maw)
+22: Green slime enemy
+
+. . .
+
+Every other value is just some glitched graphic with some text string and they usually make your music change.

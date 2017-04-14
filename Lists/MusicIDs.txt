@@ -1,0 +1,103 @@
+Thanks to ArchProctor for correcting some music IDs and for finding out most of the music IDs from 0x20 through 0xFF (which is most of the music IDs in general).
+
+Music IDs:
+
+00 No music
+01 Title screen (logo)
+02 Trendy game
+03 Game Over screen
+04 Mabe Village
+05 Overworld music
+06 Tal Tal Heights
+07 Shop
+08 Raft Ride Rapids
+09 Mysterious Forest
+0A House
+0B Animal Village
+0C Fairy House
+0D Title Screen
+0E BowWow Kidnapped
+0F Level 2 Sword
+10 New weapon
+11 Save select
+12 Wind Fish's egg
+13 Kanalet Castle
+14 Level 1
+15 Level 2
+16 Level 3
+17 Level 4
+18 Instrument room
+19 Boss Theme
+1A Ship scene
+1B Instrument obtained
+1C In bed music
+1D Pre-Sword music
+1E Beginning Dream
+1F Ancient Ruins
+20 Full Moon Cello
+21 Side-scrolling area
+22 Owl theme
+23 Nightmare (but not Dethl)
+24 Dream Shrine Bedroom
+25 Picking up post-boss heart container and then Instrument Room theme
+26 Caves
+27 Acorn/Power Piece pickup + theme (for version without pickup tune, see 49)
+28 Conch Horn
+29 Sea Lily’s Bell
+2A Surf Harp
+2B Wind Marimba
+2C Coral Triangle
+2D Organ of Evening Calm
+2E Thunder Drum
+2F Ballad of the Wind Fish as sung by Marin by Rooster grave
+30 Manbo's Mambo
+31 The little track that plays after you get the first sword (or after picking up Marin), then the normal overworld music (occurs after track 0F)
+32 Write’s house
+33 Telephone booth
+34 Tarin bothering the hornet nest
+35 Frog’s Song of Soul
+36 Monkeys’ bridge-building theme
+37 Christine’s house (the female goat who corresponds with Write)
+38 Tokata's Song - Ocariana
+39 Fighting the Head of Turtle Rock
+3A Second Fishing Minigame
+3B Unused jingle
+3C Tokata's Song
+3D Staff roll (has long silence before playing)
+3E Entering cave where BowWow is being held
+3F Ballad of the Windfish that plays at end, while island is dissolving
+40 Richard’s Villa
+41 Ballad of the Windfish played on Ocarina (the solo ocarina part while breaking the Egg)
+42 Ballad of the Windfish with Ocarina and Sea Lily’s Bell
+43 Ballad of the Windfish with Ocarina, Sea Lily’s Bell and Surf Harp
+44 Ballad of the Windfish with Ocarina, Sea Lily’s Bell, Surf Harp and Wind Marimba
+45 Ballad of the Windfish with Ocarina, Sea Lily’s Bell, Surf Harp, Wind Marimba and Triangle
+46 Ballad of the Windfish with Ocarina, Sea Lily’s Bell, Surf Harp, Wind Marimba, Triangle and Organ of Evening Calm
+47 Ballad of the Windfish with Ocarina, Sea Lily’s Bell, Surf Harp, Wind Marimba, Triangle, Organ of Evening Calm and Thunder Drum
+48 House by the Bay
+49 Acorn/Power Piece theme WITHOUT initial pickup tune (included in track 27)
+4A Learning Ballad of the Windfish on Ocarina while Marin sings it
+4B Level 5: Catfish’s Maw
+4C Revealing Angler’s Tunnel
+4D Finding Marin on the beach
+4E Listening to Marin (or not) on beach
+4F Unused miscellaneous jingle
+50 Miniboss/Dethl
+51 Kanalet Castle
+52 Level 1: Tail Cave
+53 Dream Shrine
+54 Eagle Tower’s main boss theme (includes that little prelude, and then regular boss music. See 5C for prelude only)
+55 Rooster being revived
+56 Level 2 Sword creation
+57 Theme of the Rooster Guy’s house
+58 Level 6: Face Shrine
+59 Talking to the Wind Fish
+5A Level 8: Turtle Rock
+5B Level 7: Eagle’s Tower
+5C Eagle Tower’s main boss theme (endless prelude. See 54 for prelude + main boss theme)
+5D Pre-Nightmare-battle theme (plays when you fall onto the battle stage)
+5E Track that plays after you beat certain bosses, but before they disappear (e.g. Catfish’s Maw’s boss, it talks to you while this is playing)
+5F Climbing the final staircase (after beating Dethl)
+60 Zelda theme remix (Entering Zelda on File Select)
+61-6F Color Dungeon
+70-FF Glitchy music, glitches what was previously being heard (putting one of these values on OW map 51 causes the House theme (track 0A) to play)
