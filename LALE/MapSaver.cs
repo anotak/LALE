@@ -170,7 +170,7 @@ namespace LALE
         }
 
         public bool saveOverworldCollision(
-                                            List<Object> objects,
+                                            List<LAObject> objects,
                                             List<Warps> warps,
                                             byte map,
                                             byte floor,
@@ -221,7 +221,7 @@ namespace LALE
             gb.BufferLocation = secondhalf;
             byte b = (byte)((unknown * 0x10) + floor);
             gb.WriteByte(b);
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 check = checkWrite(true, false);
                 if (check != false)
@@ -364,7 +364,7 @@ namespace LALE
         }
 
         public bool saveDungeonCollision(
-                                        List<Object> objects,
+                                        List<LAObject> objects,
                                         List<Warps> warps,
                                         byte dungeon,
                                         byte map,
@@ -398,7 +398,7 @@ namespace LALE
             cMapPointer = gb.BufferLocation - 1;
             byte b = (byte)((wall * 0x10) + floor);
             gb.WriteByte(b);
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 check = checkWrite(false, false);
                 if (check != false)
@@ -614,7 +614,7 @@ namespace LALE
             return false;
         }
 
-        public bool saveSprites(List<Object> objects, bool overworld, byte map, byte dungeon, int usedspace, int freespace, int[] pointers, List<Int32> unSortedPointers)
+        public bool saveSprites(List<LAObject> objects, bool overworld, byte map, byte dungeon, int usedspace, int freespace, int[] pointers, List<Int32> unSortedPointers)
         {
             bool check;
             int cMapPointer;
@@ -631,7 +631,7 @@ namespace LALE
             }
             gb.BufferLocation = gb.Get3BytePointerAddress((byte)(gb.BufferLocation / 0x4000), gb.BufferLocation + (map * 2)).Address;
             cMapPointer = gb.BufferLocation;
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 byte b = (byte)((obj.y * 0x10) + obj.x);
                 check = checkWrite(overworld, true);

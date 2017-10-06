@@ -20,12 +20,12 @@ namespace LALE
         bool magGlass;
         bool sprites;
         bool copyData = false;
-        List<Object> mapObjects;
+        List<LAObject> mapObjects;
         List<Warps> mapWarps;
         int wall;
         int floor;
 
-        public RepointCollision(byte[] g, bool overworld, int dungeon, int map, int address, bool spec, bool mag, bool sprite, List<Warps> warps, List<Object> objects, int wallvalue, int floorvalue)
+        public RepointCollision(byte[] g, bool overworld, int dungeon, int map, int address, bool spec, bool mag, bool sprite, List<Warps> warps, List<LAObject> objects, int wallvalue, int floorvalue)
         {
             InitializeComponent();
             gb = new GBHL.GBFile(g);
@@ -155,7 +155,7 @@ namespace LALE
                     gb.BufferLocation = mapAddress + 1; //Skip animation
                     byte b = (byte)((wall * 0x10) + floor);
                     gb.WriteByte(b);
-                    foreach (Object obj in mapObjects)
+                    foreach (LAObject obj in mapObjects)
                     {
                         if (obj.is3Byte)
                         {
@@ -199,7 +199,7 @@ namespace LALE
                     gb.BufferLocation = mapAddress + 1; //Skip animation
                     byte b = (byte)((wall * 0x10) + floor);
                     gb.WriteByte(b);
-                    foreach (Object obj in mapObjects)
+                    foreach (LAObject obj in mapObjects)
                     {
                         if (obj.is3Byte)
                         {
@@ -240,7 +240,7 @@ namespace LALE
                 }
                 else if (sprites)
                 {
-                    foreach (Object obj in mapObjects)
+                    foreach (LAObject obj in mapObjects)
                     {
                         byte b = (byte)((obj.y * 0x10) + obj.x);
                         gb.WriteByte(b);

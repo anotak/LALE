@@ -12,7 +12,7 @@ namespace LALE
         GBFile gb;
         public int objectAddress;
         public byte[] spriteData;
-        public List<Object> spriteList = new List<Object>();
+        public List<LAObject> spriteList = new List<LAObject>();
         public int[] pointers;
         public List<Int32> unSortedPointers;
         public byte[] spriteInfo;
@@ -25,7 +25,7 @@ namespace LALE
 
         public void loadObjects(bool overworld, byte dungeon, byte map)
         {
-            spriteList = new List<Object>();
+            spriteList = new List<LAObject>();
             if (overworld)
                 gb.BufferLocation = 0x58000;
             else
@@ -41,14 +41,14 @@ namespace LALE
             byte b;
             while ((b = gb.ReadByte()) != 0xFF) //0xFE = End of room
             {
-                Object ob = new Object(); // 2-Byte tiles
+                LAObject ob = new LAObject(); // 2-Byte tiles
                 ob.y = (byte)(b >> 4);
                 ob.x = (byte)(b & 0xF);
                 ob.id = gb.ReadByte();
                 spriteList.Add(ob);
             }
             spriteData = new byte[80];
-            foreach (Object obj in spriteList)
+            foreach (LAObject obj in spriteList)
             {
                 if (obj.y < 0 || obj.y > 7)
                     continue;
@@ -63,7 +63,7 @@ namespace LALE
             FastPixel fp = new FastPixel(map);
             fp.rgbValues = new byte[160 * 128 * 4];
             fp.Lock();
-            foreach (Object obj in spriteList)
+            foreach (LAObject obj in spriteList)
             {
                 if (obj.x < 9 && obj.y < 8)
                 {
@@ -80,7 +80,7 @@ namespace LALE
             return map;
         }
 
-        public Bitmap drawSelectedSprite(Image map, Object selected)
+        public Bitmap drawSelectedSprite(Image map, LAObject selected)
         {
             Bitmap b = (Bitmap)map;
             FastPixel fp = new FastPixel(b);
@@ -140,7 +140,7 @@ namespace LALE
         public int getUsedSpace()
         {
             int s = 0;
-            foreach (Object o in spriteList)
+            foreach (LAObject o in spriteList)
                 s += 2;
             return s;
         }

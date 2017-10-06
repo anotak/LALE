@@ -12,7 +12,7 @@ namespace LALE
     public partial class NewObject : Form
     {
         GBHL.GBFile gb;
-        public Object O = new Object();
+        public LAObject O = new LAObject();
         bool overworld;
 
         public NewObject(GBHL.GBFile g, bool overWorld)

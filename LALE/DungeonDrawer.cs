@@ -10,8 +10,8 @@ namespace LALE
     {
 
         GBFile gb;
-        public List<Object> objects = new List<Object>();
-        private Object[,] wallTiles = new Object[15, 64];
+        public List<LAObject> objects = new List<LAObject>();
+        private LAObject[,] wallTiles = new LAObject[15, 64];
         public List<Warps> warps = new List<Warps>();
         public int mapAddress;
         public byte[] data;
@@ -42,7 +42,7 @@ namespace LALE
 
         public void getCollisionDataDungeon(byte map, byte dungeon, bool magGlass)
         {
-            objects = new List<Object>();
+            objects = new List<LAObject>();
             warps = new List<Warps>();
             if (magGlass && map == 0xF5 && dungeon >= 0x1A || magGlass && map == 0xF5 && dungeon < 6)
             {
@@ -75,7 +75,7 @@ namespace LALE
                 }
                 if (b >> 4 == 8 || b >> 4 == 0xC) //3-Byte objects
                 {
-                    Object o = new Object();
+                    LAObject o = new LAObject();
                     o.is3Byte = true;
                     o.length = (byte)(b & 0xF);
                     o.direction = (byte)(b >> 4);
@@ -86,7 +86,7 @@ namespace LALE
                     objects.Add(o);
                     continue;
                 }
-                Object ob = new Object(); // 2-Byte tiles
+                LAObject ob = new LAObject(); // 2-Byte tiles
                 ob.y = (byte)(b >> 4);
                 ob.x = (byte)(b & 0xF);
                 ob.id = gb.ReadByte();
@@ -108,11 +108,11 @@ namespace LALE
                 data[i] = floor;
             for (int i = 0; i < 64; i++)
             {
-                Object o = wallTiles[wall, i];
+                LAObject o = wallTiles[wall, i];
                 if (o != null)
                     data[o.x + (o.y * 10)] = (byte)o.id;
             }
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 byte door = obj.id;
                 int dx = (obj.x == 0xF ? (obj.x - 16) : obj.x);
@@ -271,7 +271,7 @@ namespace LALE
         public int getUsedSpace()
         {
             int s = 0;
-            foreach (Object o in objects)
+            foreach (LAObject o in objects)
             {
                 if (o.is3Byte)
                     s += 3;
@@ -321,7 +321,7 @@ namespace LALE
             FastPixel fp = new FastPixel(image);
             fp.rgbValues = new byte[160 * 128 * 4];
             fp.Lock();
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 int x = obj.x * 16;
                 int y = obj.y * 16;
@@ -555,10 +555,10 @@ namespace LALE
             {
                 byte b = 0;
                 int count = 0;
-                List<Object> listt = new List<Object>();
+                List<LAObject> listt = new List<LAObject>();
                 while ((b = gb.ReadByte()) != 0xFF)
                 {
-                    Object t = new Object();
+                    LAObject t = new LAObject();
                     t.y = (byte)(b / 16);
                     t.x = (byte)(b - (t.y * 16));
                     listt.Add(t);
@@ -567,7 +567,7 @@ namespace LALE
                 byte[] buffer = gb.ReadBytes(count);
                 for (int k = 0; k < count; k++)
                 {
-                    Object t = listt[k];
+                    LAObject t = listt[k];
                     t.id = buffer[k];
                     listt[k] = t;
                     wallTiles[i, k] = listt[k];
@@ -651,13 +651,13 @@ namespace LALE
             eventTrigger = (byte)(b & 0xF);
         }
 
-        public Bitmap drawSelectedObject(Bitmap image, Object selected)
+        public Bitmap drawSelectedObject(Bitmap image, LAObject selected)
         {
             Color border = Color.White;
             FastPixel fp = new FastPixel(image);
             fp.rgbValues = new byte[160 * 128 * 4];
             fp.Lock();
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 if (obj.x != selected.x)
                     continue;

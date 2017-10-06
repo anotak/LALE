@@ -97,7 +97,7 @@
     <Compile Include="NewObject.Designer.cs">
       <DependentUpon>NewObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Object.cs" />
+    <Compile Include="LAObject.cs" />
     <Compile Include="OverworldDrawer.cs" />
     <Compile Include="OwlStatueEditor.cs">
       <SubType>Form</SubType>

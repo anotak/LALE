@@ -15,8 +15,8 @@ namespace LALE
         public int[] pointers;
         public List<Int32> unSortedPointers;
         bool s;
-        private Object overworldObjects = new Object();
-        public List<Object> objects = new List<Object>();
+        private LAObject overworldObjects = new LAObject();
+        public List<LAObject> objects = new List<LAObject>();
         public List<Warps> warps = new List<Warps>();
         public byte floor;
         public byte music;
@@ -85,7 +85,7 @@ namespace LALE
 
         }
 
-        public Bitmap drawMap(Bitmap tiles, byte[] mapData, bool borderss, Object selected)
+        public Bitmap drawMap(Bitmap tiles, byte[] mapData, bool borderss, LAObject selected)
         {
             Bitmap bmp = new Bitmap(160, 128);
             FastPixel fp = new FastPixel(bmp);
@@ -124,7 +124,7 @@ namespace LALE
             Color border;
             fp.rgbValues = new byte[160 * 128 * 4];
             fp.Lock();
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 if (obj.is3Byte && !obj.special && obj.direction == 8)
                     border = Color.DarkRed;
@@ -386,9 +386,9 @@ namespace LALE
         public void getCollisionDataOverworld(byte map, bool s)
         {
             int i = -1;
-            objects = new List<Object>();
+            objects = new List<LAObject>();
             warps = new List<Warps>();
-            overworldObjects = new Object();
+            overworldObjects = new LAObject();
             int secondhalf;
             collision = true;
 
@@ -438,7 +438,7 @@ namespace LALE
                 }
                 if (b >> 4 == 8 || b >> 4 == 0xC) //3-Byte objects
                 {
-                    Object o = new Object();
+                    LAObject o = new LAObject();
                     o.is3Byte = true;
                     o.length = (byte)(b & 0xF);
                     o.direction = (byte)(b >> 4);
@@ -451,7 +451,7 @@ namespace LALE
                 }
                 else
                 {
-                    Object ob = new Object(); // 2-Byte tiles
+                    LAObject ob = new LAObject(); // 2-Byte tiles
                     ob.y = (byte)(b >> 4);
                     ob.x = (byte)(b & 0xF);
                     ob.id = gb.ReadByte();
@@ -459,7 +459,7 @@ namespace LALE
                     continue;
                 }
             }
-            foreach (Object obj in overworldObjects.objectIDs)
+            foreach (LAObject obj in overworldObjects.objectIDs)
             {
                 objects.Add(obj);
             }
@@ -470,7 +470,7 @@ namespace LALE
             mapData = new byte[80];
             for (int i = 0; i < 80; i++)
                 mapData[i] = (byte)(floor + (wall * 0x10));
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 int dx = (obj.x == 0xF ? (obj.x - 16) : obj.x);
                 int dy = (obj.y == 0xF ? (obj.y - 16) : obj.y);
@@ -793,7 +793,7 @@ namespace LALE
         public int getUsedSpace()
         {
             int s = 0;
-            foreach (Object o in objects)
+            foreach (LAObject o in objects)
             {
                 if (o.is3Byte)
                     s += 3;
@@ -875,13 +875,13 @@ namespace LALE
             return space;
         }
 
-        public Bitmap drawSelectedObject(Bitmap image, Object selected)
+        public Bitmap drawSelectedObject(Bitmap image, LAObject selected)
         {
             FastPixel fp = new FastPixel(image);
             Color border = Color.White;
             fp.rgbValues = new byte[160 * 128 * 4];
             fp.Lock();
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 if (obj.x != selected.x)
                     continue;

@@ -28,7 +28,7 @@ namespace LALE
         Patch patches;
         ExportMap ExportMaps;
         public List<Warps> WL = new List<Warps>();
-        Object selectedObject = new Object();
+        LAObject selectedObject = new LAObject();
         Point lastMapHoverPoint = new Point(-1, -1);
         Color[,] palette = new Color[8, 4];
         Color[,] paletteCopy;
@@ -73,6 +73,12 @@ namespace LALE
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 filename = ofd.FileName;
+
+                {
+                    ROMAnalysis analysis = new ROMAnalysis();
+                    analysis.Analyze(filename);
+                }
+
                 BinaryReader br = new BinaryReader(File.OpenRead(filename));
                 byte[] buffer = br.ReadBytes((Int32)br.BaseStream.Length);
 
@@ -91,7 +97,7 @@ namespace LALE
                 //if (comboBox1.SelectedIndex != 0)
                 // comboBox1.SelectedIndex = 0;
                 if (tabControl1.SelectedIndex != 0)
-                    tabControl1.SelectedIndex = 0;
+                    tabControl1.SelectedIndex = 0; // reset to overworld
                 nMap.Enabled = true;
                 comboBox1.Enabled = true;
                 cSpecialTiles.Enabled = true;
@@ -319,7 +325,12 @@ namespace LALE
             mapIndex = (byte)nMap.Value;
             LoadSandA();
             loadTileset();
-            if ((tabControl1.SelectedIndex != 0 && mapIndex == 0xF5 && dungeonIndex >= 0x1A) || tabControl1.SelectedIndex != 0 && mapIndex == 0xF5 && dungeonIndex < 6)
+
+            // not overworld
+            if (
+                (tabControl1.SelectedIndex != 0 && mapIndex == 0xF5 && dungeonIndex >= 0x1A)
+                || tabControl1.SelectedIndex != 0 && mapIndex == 0xF5 && dungeonIndex < 6
+                )
             {
                 cMagGlass.Visible = true;
                 cMagGlass1.Visible = true;
@@ -453,7 +464,7 @@ namespace LALE
         {
             if (pTiles.Image != null)
             {
-                if (tabControl1.SelectedIndex == 0)
+                if (tabControl1.SelectedIndex == 0) // overworld
                 {
                     exportGroupIndex = tabControl1.SelectedIndex;
                     nMap.Minimum = 0x0;
@@ -483,7 +494,7 @@ namespace LALE
                     drawMinimap();
                     rOverlay.Checked = true;
                 }
-                else if (tabControl1.SelectedIndex == 1)
+                else if (tabControl1.SelectedIndex == 1) // dungeon
                 {
                     exportGroupIndex = tabControl1.SelectedIndex;
                     cSpecialTiles.Checked = false;
@@ -535,7 +546,7 @@ namespace LALE
                     drawDungeon();
                     drawMinimap();
                 }
-                else
+                else // indoors
                 {
                     exportGroupIndex = tabControl1.SelectedIndex;
                     cSpecialTiles.Checked = false;
@@ -596,7 +607,7 @@ namespace LALE
                         return i;
                     else
                     {
-                        Object o = dungeonDrawer.objects[i];
+                        LAObject o = dungeonDrawer.objects[i];
                         if (dungeonDrawer.objects[i].is3Byte)
                         {
                             if (o.direction == 8)
@@ -636,7 +647,7 @@ namespace LALE
                         return i;
                     else
                     {
-                        Object o = overworldDrawer.objects[i];
+                        LAObject o = overworldDrawer.objects[i];
                         int dx = (o.x == 0xF ? (o.x - 16) : o.x);
                         int dy = (o.y == 0xF ? (o.y - 16) : o.y);
                         if (o.is3Byte)
@@ -1317,7 +1328,7 @@ namespace LALE
                     drawDungeon();
                 return;
             }
-            Object o = new Object();
+            LAObject o = new LAObject();
             if (overWorld)
                 o = overworldDrawer.objects[(byte)nSelected.Value];
             else
@@ -1355,7 +1366,7 @@ namespace LALE
             pObject.Invalidate();
         }
 
-        private void selectCollision(Object o, int index)
+        private void selectCollision(LAObject o, int index)
         {
             if (index == -1)
             {
@@ -1398,7 +1409,7 @@ namespace LALE
             if (nSelected.Value == -1)
                 return;
             string s;
-            Object o = new Object();
+            LAObject o = new LAObject();
             if (overWorld)
             {
                 o = overworldDrawer.objects[(byte)nSelected.Value];
@@ -1447,7 +1458,7 @@ namespace LALE
         {
             if (nSelected.Value == -1)
                 return;
-            Object o = new Object();
+            LAObject o = new LAObject();
             if (overWorld)
                 o = overworldDrawer.objects[(byte)nSelected.Value];
             else
@@ -1463,7 +1474,7 @@ namespace LALE
         {
             if (nSelected.Value == -1)
                 return;
-            Object o = new Object();
+            LAObject o = new LAObject();
             if (overWorld)
                 o = overworldDrawer.objects[(byte)nSelected.Value];
             else
@@ -1483,13 +1494,13 @@ namespace LALE
             if (cObjectList.Checked)
             {
                 CollisionList.Items.Clear();
-                List<Object> obj = new List<Object>();
+                List<LAObject> obj = new List<LAObject>();
                 string s;
                 if (overWorld)
                     obj = overworldDrawer.objects;
                 else
                     obj = dungeonDrawer.objects;
-                foreach (Object ob in obj)
+                foreach (LAObject ob in obj)
                 {
                     if (ob.is3Byte)
                         s = "3-Byte";
@@ -1589,12 +1600,12 @@ namespace LALE
                 return;
             object list = CollisionList.SelectedItem;
             byte index = (byte)CollisionList.SelectedIndex;
-            List<Object> objects = new List<Object>();
+            List<LAObject> objects = new List<LAObject>();
             if (overWorld)
                 objects = overworldDrawer.objects;
             else
                 objects = dungeonDrawer.objects;
-            Object O = objects[index];
+            LAObject O = objects[index];
             if (index == 0)
                 return;
             objects.Remove(O);
@@ -1604,7 +1615,7 @@ namespace LALE
 
             string s;
             CollisionList.Items.Clear();
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 if (obj.is3Byte)
                     s = "3-Byte";
@@ -1628,12 +1639,12 @@ namespace LALE
                 return;
             object list = CollisionList.SelectedItem;
             byte index = (byte)CollisionList.SelectedIndex;
-            List<Object> objects = new List<Object>();
+            List<LAObject> objects = new List<LAObject>();
             if (overWorld)
                 objects = overworldDrawer.objects;
             else
                 objects = dungeonDrawer.objects;
-            Object O = objects[index];
+            LAObject O = objects[index];
             if (index == nSelected.Maximum)
                 return;
             objects.Remove(O);
@@ -1643,7 +1654,7 @@ namespace LALE
 
             string s;
             CollisionList.Items.Clear();
-            foreach (Object obj in objects)
+            foreach (LAObject obj in objects)
             {
                 if (obj.is3Byte)
                     s = "3-Byte";
@@ -1728,7 +1739,7 @@ namespace LALE
             NewObject newOb = new NewObject(gb, overWorld);
             if (newOb.ShowDialog() == DialogResult.OK)
             {
-                Object O = new Object();
+                LAObject O = new LAObject();
                 O = newOb.O;
                 selectedObject = O;
                 if (overWorld)
@@ -1781,7 +1792,7 @@ namespace LALE
         {
             if (nSelected.Value == -1)
                 return;
-            Object O = new Object();
+            LAObject O = new LAObject();
             if (overWorld)
             {
                 O = overworldDrawer.objects[(byte)nSelected.Value];
@@ -2027,7 +2038,7 @@ namespace LALE
                     drawDungeon();
                 return;
             }
-            Object o = new Object();
+            LAObject o = new LAObject();
             o = sprites.spriteList[(byte)nSpriteSelected.Value];
             nSpriteID.Value = (byte)o.id;
             selectedObject = o;
@@ -2096,7 +2107,7 @@ namespace LALE
 
         private void bAddSprite_Click(object sender, EventArgs e)
         {
-            Object o = new Object();
+            LAObject o = new LAObject();
             o.id = 0;
             o.x = 0;
             o.y = 0;
@@ -2487,7 +2498,7 @@ namespace LALE
 
                 int address;
                 List<Warps> warps;
-                List<Object> objects;
+                List<LAObject> objects;
 
                 if (overWorld && !cSprite.Checked)
                 {
