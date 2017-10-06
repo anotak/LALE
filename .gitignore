@@ -215,4 +215,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-LALE/obj/
+
+
+##### LALE STUFF
+LALE/bin/*
+LALE/obj/*
