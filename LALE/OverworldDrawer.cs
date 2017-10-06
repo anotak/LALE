@@ -22,6 +22,7 @@ namespace LALE
         public byte music;
         bool collision;
         public byte wall;
+        public byte spriteBank;
 
         public OverworldDrawer(GBFile g)
         {
@@ -379,6 +380,7 @@ namespace LALE
             byte b = gb.ReadByte();
             floor = (byte)(b & 0xF);
             wall = (byte)(b >> 4);
+            spriteBank = gb.ReadByte(0x830DB + map);
         }
 
         public void getCollisionDataOverworld(byte map, bool s)

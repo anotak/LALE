@@ -11,7 +11,7 @@ namespace LALE
     public partial class PaletteEditor : Form
     {
         TileLoader tLoader;
-        Form1 form1;
+        LALEForm form1;
         public Color[,] palette;
         public GBHL.GBFile gb;
         int dungeonIndex;
@@ -26,7 +26,7 @@ namespace LALE
         public byte offset;
         ColorDialog c = new ColorDialog();
 
-        public PaletteEditor(TileLoader t, Form1 f, Color[,] pal, byte[] g, int dungeon, int map, bool overworld, bool sideview, bool special, bool crystal, byte off)
+        public PaletteEditor(TileLoader t, LALEForm f, Color[,] pal, byte[] g, int dungeon, int map, bool overworld, bool sideview, bool special, bool crystal, byte off)
         {
             InitializeComponent();
 

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AELogger.cs" />
     <Compile Include="Chest.cs" />
     <Compile Include="ChestEditor.cs">
       <SubType>Form</SubType>
@@ -115,6 +116,7 @@
     <Compile Include="RepointCollision.Designer.cs">
       <DependentUpon>RepointCollision.cs</DependentUpon>
     </Compile>
+    <Compile Include="ROMAnalysis.cs" />
     <Compile Include="SignEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,11 +156,11 @@
       <DependentUpon>TextEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="TileLoader.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="LALEForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LALEForm.Designer.cs">
+      <DependentUpon>LALEForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GridBox.cs">
       <SubType>Component</SubType>
@@ -190,8 +192,8 @@
     <EmbeddedResource Include="ExportMap.resx">
       <DependentUpon>ExportMap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="LALEForm.resx">
+      <DependentUpon>LALEForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GridBox.resx">
       <DependentUpon>GridBox.cs</DependentUpon>

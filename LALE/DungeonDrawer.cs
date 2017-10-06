@@ -20,6 +20,7 @@ namespace LALE
         public byte floor;
         public byte wall;
         public byte music;
+        public byte spriteBank;
         public byte eventID;
         public byte eventTrigger;
         public int eventDataLocation;
@@ -141,6 +142,10 @@ namespace LALE
                             }
                             if (dx > 10)
                                 continue;
+                            if (obj.x + (obj.y * 10) + i >= 80)
+                            {
+                                continue;
+                            }
                             data[obj.x + (obj.y * 10) + i] = obj.id;
                             dx++;
 
@@ -157,6 +162,10 @@ namespace LALE
                             }
                             if (dy > 7)
                                 continue;
+                            if (obj.x + (obj.y * 10) + (i * 10) >= 80)
+                            {
+                                continue;
+                            }
                             data[obj.x + (obj.y * 10) + (i * 10)] = obj.id;
                             dy++;
                         }
@@ -178,6 +187,11 @@ namespace LALE
                             continue;
                         if (dy > 7)
                             continue;
+
+                        if ((obj.x + i) + (obj.y * 10) >= 80)
+                        {
+                            continue;
+                        }
                         obj.id = obj.tiles[i];
                         data[(obj.x + i) + (obj.y * 10)] = (byte)obj.id;
                         dx++;
@@ -200,7 +214,12 @@ namespace LALE
                             continue;
                         if (dx > 9)
                             continue;
+                        if (obj.x + ((obj.y + i) * 10) >= 80)
+                        {
+                            continue;
+                        }
                         obj.id = obj.tiles[i];
+                        
                         data[obj.x + ((obj.y + i) * 10)] = obj.id;
                         dy++;
                     }
@@ -229,6 +248,10 @@ namespace LALE
                             }
                             if (dx > 9)
                                 continue;
+                            if ((obj.x + x) + ((obj.y + y) * 10) >= 80)
+                            {
+                                continue;
+                            }
                             obj.id = obj.tiles[i];
                             data[(obj.x + x) + ((obj.y + y) * 10)] = (byte)obj.id;
                             i++;
@@ -521,6 +544,8 @@ namespace LALE
             byte b = gb.ReadByte();
             wall = (byte)(b >> 4); //Upper nybble = wall type
             floor = (byte)(b & 0xF); //Lower nybble = floor type
+
+            spriteBank = gb.ReadByte(0x830DB + ((dungeon <= 5 ? 1 : 2) << 8) + map);
         }
 
         public void loadWalls()

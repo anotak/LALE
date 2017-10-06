@@ -169,13 +169,27 @@ namespace LALE
                 gb.WriteByte(b);
         }
 
-        public bool saveOverworldCollision(List<Object> objects, List<Warps> warps, byte map, byte floor, byte unknown, bool special, int usedspace, int freespace, bool s, int[] pointers, List<Int32> unSortedPointers)
+        public bool saveOverworldCollision(
+                                            List<Object> objects,
+                                            List<Warps> warps,
+                                            byte map,
+                                            byte floor,
+                                            byte unknown,
+                                            byte spritebank,
+                                            bool special,
+                                            int usedspace,
+                                            int freespace,
+                                            bool s,
+                                            int[] pointers,
+                                            List<Int32> unSortedPointers)
         {
             int cMapPointer;
             int secondhalf;
             int index;
             int i = 0;
             bool check;
+
+            gb.WriteByte(0x830DB + map, spritebank);
             if (s)
             {
                 switch (map)
@@ -349,11 +363,24 @@ namespace LALE
             return false;
         }
 
-        public bool saveDungeonCollision(List<Object> objects, List<Warps> warps, byte dungeon, byte map, byte floor, byte wall, int usedspace, int freespace, int[] pointers, List<Int32> unSortedPointers, bool magGlass)
+        public bool saveDungeonCollision(
+                                        List<Object> objects,
+                                        List<Warps> warps,
+                                        byte dungeon,
+                                        byte map,
+                                        byte floor,
+                                        byte wall,
+                                        byte spritebank,
+                                        int usedspace,
+                                        int freespace,
+                                        int[] pointers,
+                                        List<Int32> unSortedPointers,
+                                        bool magGlass)
         {
             int cMapPointer;
             int index;
             bool check;
+            gb.WriteByte(0x830DB + ((dungeon <= 5 ? 1 : 2) << 8) + map, spritebank);
             if (magGlass && dungeon >= 0x1A && map == 0xF5)
             {
                 gb.BufferLocation = gb.Get2BytePointerAddress(0x3198).Address;
