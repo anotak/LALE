@@ -37,8 +37,9 @@
     <ApplicationIcon>Sea_Shell.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GBHL">
-      <HintPath>..\..\..\..\..\Desktop\Stuff\Sources\GBHL.dll</HintPath>
+    <Reference Include="GBHL, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\GBHL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -89,6 +90,7 @@
     <Compile Include="MinimapEditor.Designer.cs">
       <DependentUpon>MinimapEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Names.cs" />
     <Compile Include="NewObject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ss %282013-05-25 at 06.07.59%29.png" />
+    <Content Include="GBHL.dll" />
     <Content Include="Sea_Shell.ico" />
     <Content Include="Sea_Shell1.ico" />
   </ItemGroup>

@@ -2085,8 +2085,13 @@ namespace LALE
         private void nSpriteID_ValueChanged(object sender, EventArgs e)
         {
             if (nSpriteSelected.Value == -1)
+            {
+                spriteLabel.Text = "Sprite: null";
                 return;
+            }
             sprites.spriteList[(byte)nSpriteSelected.Value].id = (byte)nSpriteID.Value;
+
+            spriteLabel.Text = "Sprite: " + Names.GetName(Names.sprites, (int)nSpriteID.Value);
         }
 
         private void bAddSprite_Click(object sender, EventArgs e)

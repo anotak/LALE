@@ -97,9 +97,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cSpecialTiles = new System.Windows.Forms.CheckBox();
+            this.pMinimap = new LALE.GridBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cMagGlass1 = new System.Windows.Forms.CheckBox();
             this.cSideview = new System.Windows.Forms.CheckBox();
+            this.pMinimapD = new LALE.GridBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.cMagGlass = new System.Windows.Forms.CheckBox();
             this.cSideview2 = new System.Windows.Forms.CheckBox();
@@ -111,6 +113,8 @@
             this.nFloor = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.gBoxMapData = new System.Windows.Forms.GroupBox();
+            this.nSpriteBank = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.nMusic = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -145,12 +149,9 @@
             this.nEventTrigger = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.nEventID = new System.Windows.Forms.NumericUpDown();
-            this.label19 = new System.Windows.Forms.Label();
-            this.nSpriteBank = new System.Windows.Forms.NumericUpDown();
-            this.pMinimap = new LALE.GridBox();
-            this.pMinimapD = new LALE.GridBox();
             this.pMap = new LALE.GridBox();
             this.pTiles = new LALE.GridBox();
+            this.spriteLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -159,11 +160,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nMap)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimapD)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nRegion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nFloor)).BeginInit();
             this.gBoxMapData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nSpriteBank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWall)).BeginInit();
             this.gBoxCollisions.SuspendLayout();
@@ -176,9 +180,6 @@
             this.gEventData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nEventTrigger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nEventID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nSpriteBank)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimapD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pTiles)).BeginInit();
             this.SuspendLayout();
@@ -896,6 +897,28 @@
             this.cSpecialTiles.UseVisualStyleBackColor = true;
             this.cSpecialTiles.CheckedChanged += new System.EventHandler(this.cSpecialTiles_CheckedChanged);
             // 
+            // pMinimap
+            // 
+            this.pMinimap.AllowMultiSelection = false;
+            this.pMinimap.BackColor = System.Drawing.SystemColors.Control;
+            this.pMinimap.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pMinimap.BoxSize = new System.Drawing.Size(8, 8);
+            this.pMinimap.CanvasSize = new System.Drawing.Size(128, 128);
+            this.pMinimap.HoverBox = true;
+            this.pMinimap.HoverColor = System.Drawing.Color.White;
+            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pMinimap.Location = new System.Drawing.Point(17, 9);
+            this.pMinimap.Margin = new System.Windows.Forms.Padding(4);
+            this.pMinimap.Name = "pMinimap";
+            this.pMinimap.Selectable = true;
+            this.pMinimap.SelectedIndex = -2;
+            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
+            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
+            this.pMinimap.Size = new System.Drawing.Size(175, 162);
+            this.pMinimap.TabIndex = 13;
+            this.pMinimap.TabStop = false;
+            this.pMinimap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseClick);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.cMagGlass1);
@@ -936,6 +959,28 @@
             this.cSideview.Text = "Side View";
             this.cSideview.UseVisualStyleBackColor = true;
             this.cSideview.CheckedChanged += new System.EventHandler(this.cSideview_CheckedChanged);
+            // 
+            // pMinimapD
+            // 
+            this.pMinimapD.AllowMultiSelection = false;
+            this.pMinimapD.BackColor = System.Drawing.SystemColors.Control;
+            this.pMinimapD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pMinimapD.BoxSize = new System.Drawing.Size(8, 8);
+            this.pMinimapD.CanvasSize = new System.Drawing.Size(64, 64);
+            this.pMinimapD.HoverBox = true;
+            this.pMinimapD.HoverColor = System.Drawing.Color.White;
+            this.pMinimapD.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
+            this.pMinimapD.Location = new System.Drawing.Point(8, 14);
+            this.pMinimapD.Margin = new System.Windows.Forms.Padding(4);
+            this.pMinimapD.Name = "pMinimapD";
+            this.pMinimapD.Selectable = true;
+            this.pMinimapD.SelectedIndex = -2;
+            this.pMinimapD.SelectionColor = System.Drawing.Color.Red;
+            this.pMinimapD.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
+            this.pMinimapD.Size = new System.Drawing.Size(89, 83);
+            this.pMinimapD.TabIndex = 14;
+            this.pMinimapD.TabStop = false;
+            this.pMinimapD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pMinimapD_MouseClick);
             // 
             // tabPage3
             // 
@@ -1094,6 +1139,32 @@
             this.gBoxMapData.TabIndex = 22;
             this.gBoxMapData.TabStop = false;
             this.gBoxMapData.Text = "Map Data:";
+            // 
+            // nSpriteBank
+            // 
+            this.nSpriteBank.Enabled = false;
+            this.nSpriteBank.Hexadecimal = true;
+            this.nSpriteBank.Location = new System.Drawing.Point(87, 157);
+            this.nSpriteBank.Margin = new System.Windows.Forms.Padding(4);
+            this.nSpriteBank.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nSpriteBank.Name = "nSpriteBank";
+            this.nSpriteBank.Size = new System.Drawing.Size(160, 22);
+            this.nSpriteBank.TabIndex = 27;
+            this.nSpriteBank.ValueChanged += new System.EventHandler(this.nSpriteBank_ValueChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(5, 162);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(80, 17);
+            this.label19.TabIndex = 26;
+            this.label19.Text = "Spritebank:";
             // 
             // label8
             // 
@@ -1390,7 +1461,7 @@
             // 
             this.nSpriteID.Enabled = false;
             this.nSpriteID.Hexadecimal = true;
-            this.nSpriteID.Location = new System.Drawing.Point(752, 377);
+            this.nSpriteID.Location = new System.Drawing.Point(751, 358);
             this.nSpriteID.Margin = new System.Windows.Forms.Padding(4);
             this.nSpriteID.Maximum = new decimal(new int[] {
             255,
@@ -1405,7 +1476,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(679, 379);
+            this.label15.Location = new System.Drawing.Point(678, 361);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(25, 17);
@@ -1428,7 +1499,7 @@
             // nSpriteSelected
             // 
             this.nSpriteSelected.Enabled = false;
-            this.nSpriteSelected.Location = new System.Drawing.Point(752, 337);
+            this.nSpriteSelected.Location = new System.Drawing.Point(751, 328);
             this.nSpriteSelected.Margin = new System.Windows.Forms.Padding(4);
             this.nSpriteSelected.Minimum = new decimal(new int[] {
             1,
@@ -1448,7 +1519,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(677, 340);
+            this.label14.Location = new System.Drawing.Point(677, 330);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 17);
@@ -1553,76 +1624,6 @@
             this.nEventID.Size = new System.Drawing.Size(135, 22);
             this.nEventID.TabIndex = 0;
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 162);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(80, 17);
-            this.label19.TabIndex = 26;
-            this.label19.Text = "Spritebank:";
-            // 
-            // nSpriteBank
-            // 
-            this.nSpriteBank.Enabled = false;
-            this.nSpriteBank.Hexadecimal = true;
-            this.nSpriteBank.Location = new System.Drawing.Point(87, 157);
-            this.nSpriteBank.Margin = new System.Windows.Forms.Padding(4);
-            this.nSpriteBank.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.nSpriteBank.Name = "nSpriteBank";
-            this.nSpriteBank.Size = new System.Drawing.Size(160, 22);
-            this.nSpriteBank.TabIndex = 27;
-            this.nSpriteBank.ValueChanged += new System.EventHandler(this.nSpriteBank_ValueChanged);
-            // 
-            // pMinimap
-            // 
-            this.pMinimap.AllowMultiSelection = false;
-            this.pMinimap.BackColor = System.Drawing.SystemColors.Control;
-            this.pMinimap.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pMinimap.BoxSize = new System.Drawing.Size(8, 8);
-            this.pMinimap.CanvasSize = new System.Drawing.Size(128, 128);
-            this.pMinimap.HoverBox = true;
-            this.pMinimap.HoverColor = System.Drawing.Color.White;
-            this.pMinimap.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pMinimap.Location = new System.Drawing.Point(17, 9);
-            this.pMinimap.Margin = new System.Windows.Forms.Padding(4);
-            this.pMinimap.Name = "pMinimap";
-            this.pMinimap.Selectable = true;
-            this.pMinimap.SelectedIndex = -2;
-            this.pMinimap.SelectionColor = System.Drawing.Color.Red;
-            this.pMinimap.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
-            this.pMinimap.Size = new System.Drawing.Size(175, 162);
-            this.pMinimap.TabIndex = 13;
-            this.pMinimap.TabStop = false;
-            this.pMinimap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pMinimap_MouseClick);
-            // 
-            // pMinimapD
-            // 
-            this.pMinimapD.AllowMultiSelection = false;
-            this.pMinimapD.BackColor = System.Drawing.SystemColors.Control;
-            this.pMinimapD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pMinimapD.BoxSize = new System.Drawing.Size(8, 8);
-            this.pMinimapD.CanvasSize = new System.Drawing.Size(64, 64);
-            this.pMinimapD.HoverBox = true;
-            this.pMinimapD.HoverColor = System.Drawing.Color.White;
-            this.pMinimapD.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-            this.pMinimapD.Location = new System.Drawing.Point(8, 14);
-            this.pMinimapD.Margin = new System.Windows.Forms.Padding(4);
-            this.pMinimapD.Name = "pMinimapD";
-            this.pMinimapD.Selectable = true;
-            this.pMinimapD.SelectedIndex = -2;
-            this.pMinimapD.SelectionColor = System.Drawing.Color.Red;
-            this.pMinimapD.SelectionRectangle = new System.Drawing.Rectangle(-2, 0, 1, 1);
-            this.pMinimapD.Size = new System.Drawing.Size(89, 83);
-            this.pMinimapD.TabIndex = 14;
-            this.pMinimapD.TabStop = false;
-            this.pMinimapD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pMinimapD_MouseClick);
-            // 
             // pMap
             // 
             this.pMap.AllowMultiSelection = false;
@@ -1669,11 +1670,21 @@
             this.pTiles.Paint += new System.Windows.Forms.PaintEventHandler(this.pTiles_Paint);
             this.pTiles.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pTiles_MouseClick);
             // 
-            // Form1
+            // spriteLabel
+            // 
+            this.spriteLabel.AutoSize = true;
+            this.spriteLabel.Location = new System.Drawing.Point(673, 388);
+            this.spriteLabel.Name = "spriteLabel";
+            this.spriteLabel.Size = new System.Drawing.Size(51, 17);
+            this.spriteLabel.TabIndex = 45;
+            this.spriteLabel.Text = "sprite: ";
+            // 
+            // LALEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 692);
+            this.Controls.Add(this.spriteLabel);
             this.Controls.Add(this.gEventData);
             this.Controls.Add(this.bDeleteSprite);
             this.Controls.Add(this.bAddSprite);
@@ -1701,7 +1712,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "LALEForm";
             this.Text = "LALE";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1715,14 +1726,17 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pMinimapD)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nRegion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nFloor)).EndInit();
             this.gBoxMapData.ResumeLayout(false);
             this.gBoxMapData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nSpriteBank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nMusic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWall)).EndInit();
             this.gBoxCollisions.ResumeLayout(false);
@@ -1737,9 +1751,6 @@
             this.gEventData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nEventTrigger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nEventID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nSpriteBank)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMinimapD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pTiles)).EndInit();
             this.ResumeLayout(false);
@@ -1871,6 +1882,7 @@
         private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem1;
         private System.Windows.Forms.NumericUpDown nSpriteBank;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label spriteLabel;
     }
 }
 
