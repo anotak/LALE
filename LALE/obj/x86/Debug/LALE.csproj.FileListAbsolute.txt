@@ -26,3 +26,6 @@ C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Debug\L
 C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Debug\LALE.RepointCollision.resources
 C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Debug\LALE.MinibossEditor.resources
 C:\Users\Patrick\documents\visual studio 2010\Projects\LALE\LALE\obj\x86\Debug\LALE.PaletteEditor.resources
+C:\DOCS\GitHub\LALE\LALE\bin\Debug\LALE.exe.config
+C:\DOCS\GitHub\LALE\LALE\obj\x86\Debug\LALE.exe
+C:\DOCS\GitHub\LALE\LALE\obj\x86\Debug\LALE.pdb
