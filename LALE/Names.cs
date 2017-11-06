@@ -236,7 +236,7 @@ namespace LALE
             "DF: ",
             "E0: ",
             "E1: ",
-            "E2: ",
+            "E2: wall flamethrower",
             "E3: ",
             "E4: ",
             "E5: Floating Heart/Arrows",

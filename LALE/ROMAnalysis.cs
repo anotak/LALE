@@ -154,8 +154,102 @@ namespace LALE
             sprites.loadObjects(true, 0, mapIndex);
 
             overworldDrawer.getFloor(mapIndex, false);
+            overworldDrawer.getCollisionDataOverworld(mapIndex, false);
+            List<Warps> warps = overworldDrawer.warps;
+            overworldDrawer.getCollisionDataOverworld(mapIndex, true);
+
+            foreach (Warps w1 in overworldDrawer.warps) 
+            {
+                bool bAdd = true;
+                foreach (Warps w2 in warps)
+                {
+                    if (w1.map == w2.map && w1.region == w2.region)
+                    {
+                        bAdd = false;
+                        break;
+                    }
+                }
+                if (bAdd)
+                {
+                    warps.Add(w1);
+                }
+            }
 
             DoSprites(overworldDrawer.spriteBank, 0, mapIndex, true);
+            
+            DoWarps(warps, 0, mapIndex, true);
+        }
+
+        public void DoWarps(List<Warps> warps, byte dungeonIndex, byte mapIndex, bool bOverworld)
+        {
+            if (warps == null)
+            {
+                //AELogger.Log("null warps");
+                return;
+            }
+            else if (warps.Count <= 0)
+            {
+                //AELogger.Log("no warps");
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+
+            if (bOverworld)
+            {
+                sb.Append("overworld map ");
+                sb.Append((char)((int)'A' + mapIndex % 16));
+                sb.Append('-');
+                sb.Append((mapIndex / 16) + 1);
+            }
+            else
+            {
+                sb.Append("interior map ");
+                sb.Append(dungeonIndex.ToString("X2"));
+                sb.Append('_');
+                sb.Append(mapIndex.ToString("X2"));
+            }
+            sb.Append("\n\thas warps: ");
+            int index = 0;
+            //string[] types = { "Overworld", "Interior", "Side-Scroller" };
+
+            foreach (Warps w in warps)
+            {
+                sb.Append("\n\t\twarp number: ");
+                sb.Append(index);
+                
+                if (w.type == 0) // overworld
+                {
+                    sb.Append("\n\t\t\tdestination: OVERWORLD ");
+                    sb.Append((char)((int)'A' + w.map % 16));
+                    sb.Append('-');
+                    sb.Append((w.map / 16) + 1);
+                }
+                else if (w.type == 1) // dungeon
+                {
+                    if (w.region < 6)
+                    {
+                        sb.Append("\n\t\t\tdestination: dungeon 0-5 room number: ");
+                    }
+                    else
+                    {
+                        sb.Append("\n\t\t\tdestination: dungeon 6++ room number: ");
+                    }
+                    sb.Append(w.map.ToString("X2"));
+                }
+                else //sidescroller
+                {
+                    sb.Append("\n\t\t\tdestination map: ");
+                    sb.Append(w.map.ToString("X2"));
+                    sb.Append("\n\t\t\tdestination region: ");
+                    sb.Append(w.region.ToString("X2"));
+                }
+                
+                
+                //sb.Append(w.x.ToString("X2"));
+                //sb.Append(w.y.ToString("X2"));
+                index++;
+            }
+            AELogger.Log(sb,false);
         }
 
         public void DoSprites(byte bank, byte dungeonIndex, byte mapIndex, bool bOverworld)
