@@ -1,3 +1,6 @@
+This fork is by anotak for updating Fatories's abandoned LALE project.
+Here is the original readme by Fatories:
+
 # LALE
 Link's Awakening Level Editor Source (Rough)
 
